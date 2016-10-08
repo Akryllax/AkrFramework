@@ -1,0 +1,25 @@
+version=52;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class Camera
+	{
+		pos[]={20501.961,111.29473,9010.709};
+		dir[]={-0.18034537,0.06762933,0.98136157};
+		up[]={0.012209405,0.99771124,-0.066443615};
+		aside[]={0.9836151,9.704745e-007,0.18076342};
+	};
+};
+binarizationWanted=0;
+class AddonsMetaData
+{
+};
+randomSeed=8184258;
+class ScenarioData
+{
+	author="Kernel Panic";
+};
