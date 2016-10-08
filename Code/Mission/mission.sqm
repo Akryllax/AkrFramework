@@ -18,7 +18,7 @@ binarizationWanted=0;
 class AddonsMetaData
 {
 };
-randomSeed=8184258;
+randomSeed=1;
 class ScenarioData
 {
 	author="Kernel Panic";
