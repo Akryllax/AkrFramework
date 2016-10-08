@@ -1,0 +1,119 @@
+enableDebugConsole = 1;
+saving = 0;
+
+author = "Akryllax";
+
+onLoadName = "PurelifeRPG";
+onLoadMission = "EXPERIMENTAL";
+onLoadIntro = "Bienvenido :)";
+onLoadMissionTime = 0;
+onLoadIntroTime = 0;
+
+
+respawn = "BASE";
+respawnDelay = 0;
+respawnDialog = 0;
+respawnOnStart = 1;
+
+disabledAI = 1;
+debriefing = 0;
+
+corpseManagerMode = 2;
+corpseLimit = 20;
+corpseRemovalMinTime = 600;
+corpseRemovalMaxTime = 900;
+
+wreckManagerMode = 1;
+wreckLimit = 25;
+wreckRemovalMinTime = 600;
+wreckRemovalMaxTime = 700;
+
+#include "dialogs\Master.inc"
+class Header
+{
+	gameType = PRL; // Game type, see 'class' columns in the table below
+	minPlayers = 1; //min # of players the mission supports
+	maxPlayers = 180; //max # of players the mission supports
+};
+class CfgSounds {
+	#include "include\Sounds.inc"
+};
+class CfgFunctions {
+	#include "include\Functions.inc"
+};
+class CfgRemoteExecCommands {
+	#include "include\MP.inc"
+};
+class CfgMusic
+{
+	tracks[]={};
+	class IntroSong1
+	{
+		name = "Dead Combo - Povo Que Caís Descalço";
+		sound[] = {"\sounds\deadCombo_povo.ogg", db+0, 1.0};
+	};
+	class IntroSong2
+	{
+		name = "State Shirt - Computer";
+		sound[] = {"\sounds\computer.ogg", db+0, 1.0};
+	};
+	class IntroSong3
+	{
+		name = "These days";
+		sound[] = {"\sounds\theseDays.ogg", db+0, 1.0};
+	};
+	class IntroSong4
+	{
+		name = "Destroy something";
+		sound[] = {"\sounds\destroySomething.ogg", db+0, 1.0};
+	};
+	class IntroSong5
+	{
+		name = "kopeika";
+		sound[] = {"\sounds\kopeika.ogg", db+0, 1.0};
+	};
+	class IntroSong6
+	{
+		name = "Gone away";
+		sound[] = {"\sounds\goneSomewhere.ogg", db+0, 1.0};
+	};
+};
+class RscTitles
+{
+	#include "dialogs\Loadbar.diag"
+	#include "dialogs\LogoOverlay.diag"
+	#include "dialogs\MusicOverlay.diag"
+	#include "dialogs\DeadMessage.diag"
+	
+};
+
+taskManagement_markers3D = 1;
+taskManagement_propagate = 0;
+taskManagement_drawDist = 2000;
+
+//arma-radio
+class nRadio {
+	/*
+		Some example stations.
+	*/
+	class Radio1 {
+		name = "BBC Radio 1";
+		url = "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p";
+	};
+	class Radio2 {
+		name = "BBC Radio 2";
+		url = "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p";
+	};
+	class SmoothFM {
+		name = "Smooth FM";
+		url = "http://media-ice.musicradio.com:80/SmoothNorthWestMP3";
+	};
+	class Police1 {
+		name = "Jefferson County Alabama";
+		url = "http://209.105.250.69:8221/live";
+	};
+	class RockFM {
+		name = "Rock FM"
+		url = "http://195.55.74.215/cope/rockfm.mp3";
+	};
+};
