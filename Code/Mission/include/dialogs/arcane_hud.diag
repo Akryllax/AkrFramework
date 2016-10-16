@@ -1,0 +1,182 @@
+#include "IDD.h"
+#include "IDC.h"
+#include "COLOR.h"
+
+class ArcaneHUD
+{
+	idd = IDD_DIAG_MUSIC_OVERLAY;
+	movingEnable = 1;
+	fadein = 0;
+	duration = 999999999999999999999999999;
+	fadeout = 0;
+	name = "Arcane HUD";
+	onLoad = "uiNamespace setVariable ['arcaneHUD',_this select 0]; [] execVM 'include\dialogs\arcane.init'";
+
+	controlsBackground[] = 
+	{
+		BKG_BarMain,
+		BKG_BarSecondary,
+		BKG_Connector
+	};
+	controls[]=
+	{
+		IMG_SkillPrimary,
+		IMG_SkillSecundary,
+		IMG_SeparatorSkills,
+		TXT_SkillPrimary,
+		TXT_SkillSecondary,
+		LB_PSI,
+		LB_TOX,
+		ST_PSI,
+		ST_TOX,
+		STRUC_PSI,
+		STRUC_TOX
+	};
+	////////////////////////////////////////////////////////
+	// GUI EDITOR OUTPUT START (by Kernel Panic, v1.063, #Gamake)
+	////////////////////////////////////////////////////////
+
+	class BKG_BarMain: RscText
+	{
+		idc = IDC_ARCANEHUD_BKG_BARMAIN;
+		x = -27.5 * GUI_GRID_W + GUI_GRID_X;
+		y = -9.5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 17 * GUI_GRID_W;
+		h = 3.5 * GUI_GRID_H;
+		colorBackground[] = BACKGROUND_MAIN;
+	};
+	class BKG_BarSecondary: RscText
+	{
+		idc = IDC_ARCANEHUD_BKG_BARSECONDARY;
+		x = -27.5 * GUI_GRID_W + GUI_GRID_X;
+		y = -5.5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 9 * GUI_GRID_W;
+		h = 3.5 * GUI_GRID_H;
+		colorBackground[] = BACKGROUND_MAIN;
+	};
+	class IMG_SkillPrimary: RscPicture
+	{
+		idc = IDC_ARCANEHUD_IMG_SKILLPRIMARY;
+		text = "#(argb,8,8,3)color(1,1,1,1)";
+		x = -27 * GUI_GRID_W + GUI_GRID_X;
+		y = -5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 3 * GUI_GRID_W;
+		h = 2.5 * GUI_GRID_H;
+	};
+	class TXT_SkillPrimary: RscText
+	{
+		idc = IDC_ARCANEHUD_TEXT_SKILLPRIMARY;
+		style = ST_CENTER;
+		text = "";
+		x = -27 * GUI_GRID_W + GUI_GRID_X;
+		y = -5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 3 * GUI_GRID_W;
+		h = 2.5 * GUI_GRID_H;
+		onLoad = "uiNamespace setVariable ['arcaneHUD_text_primary',_this select 0]";
+	};
+	class IMG_SkillSecundary: RscPicture
+	{
+		idc = IDC_ARCANEHUD_IMG_SKILLSECUNDARY;
+		text = "#(argb,8,8,3)color(1,1,1,1)";
+		x = -22 * GUI_GRID_W + GUI_GRID_X;
+		y = -5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 3 * GUI_GRID_W;
+		h = 2.5 * GUI_GRID_H;
+	};
+	class TXT_SkillSecondary: RscText
+	{
+		idc = IDC_ARCANEHUD_TEXT_SKILLSECONDARY;
+		style = ST_CENTER;
+		text = "";
+		x = -27 * GUI_GRID_W + GUI_GRID_X;
+		y = -5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 3 * GUI_GRID_W;
+		h = 2.5 * GUI_GRID_H;
+		onLoad = "uiNamespace setVariable ['arcaneHUD_text_secondary',_this select 0]";
+	};
+	class IMG_SeparatorSkills: RscPicture
+	{
+		idc = IDC_ARCANEHUD_IMG_SEPARATORSKILLS;
+		text = "#(argb,8,8,3)color(1,1,1,1)";
+		x = -23.5 * GUI_GRID_W + GUI_GRID_X;
+		y = -5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 1 * GUI_GRID_W;
+		h = 2.5 * GUI_GRID_H;
+	};
+	class LB_PSI: RscText
+	{
+		idc = IDC_ARCANEHUD_LB_PSI;
+		text = "PSI:"; //--- ToDo: Localize;
+		x = -27 * GUI_GRID_W + GUI_GRID_X;
+		y = -9 * GUI_GRID_H + GUI_GRID_Y;
+		w = 4 * GUI_GRID_W;
+		h = 1 * GUI_GRID_H;
+	};
+	class LB_TOX: RscText
+	{
+		idc = IDC_ARCANEHUD_LB_TOX;
+		text = "TOX:"; //--- ToDo: Localize;
+		x = -27 * GUI_GRID_W + GUI_GRID_X;
+		y = -7.5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 4 * GUI_GRID_W;
+		h = 1 * GUI_GRID_H;
+	};
+	class ST_PSI: RscProgressH
+	{
+		idc = IDC_ARCANEHUD_ST_PSI;
+		text = "ST_HORIZONTAL"; //--- ToDo: Localize;
+		x = -23.5 * GUI_GRID_W + GUI_GRID_X;
+		y = -9 * GUI_GRID_H + GUI_GRID_Y;
+		w = 12 * GUI_GRID_W;
+		h = 1 * GUI_GRID_H;
+		colorBar[] = {0.204,0.016,0.341,0.7};
+		colorFrame[] = {0.204,0.016,0.341,1};
+		onLoad = "uiNamespace setVariable ['arcaneHUD_progress_psi',_this select 0]";
+	};
+	class STRUC_PSI: RscText
+	{
+		idc = IDC_ARCANEHUD_STRUC_PSI;
+		style = ST_CENTER;
+		text = ""; //--- ToDo: Localize;
+		x = -23.5 * GUI_GRID_W + GUI_GRID_X;
+		y = -9 * GUI_GRID_H + GUI_GRID_Y;
+		w = 12 * GUI_GRID_W;
+		h = 1 * GUI_GRID_H;
+		onLoad = "uiNamespace setVariable ['arcaneHUD_text_psi',_this select 0]";
+	};
+	class ST_TOX: RscProgressH
+	{
+		idc = IDC_ARCANEHUD_ST_TOX;
+		text = "ST_HORIZONTAL"; //--- ToDo: Localize;
+		x = -23.5 * GUI_GRID_W + GUI_GRID_X;
+		y = -7.5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 12 * GUI_GRID_W;
+		h = 1 * GUI_GRID_H;
+		colorBar[] = {0.439,0,0,0.7};
+		colorFrame[] = {0.439,0,0,1};
+		onLoad = "uiNamespace setVariable ['arcaneHUD_progress_tox',_this select 0]";
+	};
+	class STRUC_TOX: RscText
+	{
+		idc = IDC_ARCANEHUD_STRUC_TOX;
+		style = ST_CENTER;
+		text = ""; //--- ToDo: Localize;
+		x = -23.5 * GUI_GRID_W + GUI_GRID_X;
+		y = -7.5 * GUI_GRID_H + GUI_GRID_Y;
+		w = 12 * GUI_GRID_W;
+		h = 1 * GUI_GRID_H;
+		onLoad = "uiNamespace setVariable ['arcaneHUD_text_tox',_this select 0]";
+	};
+	class BKG_Connector: RscText
+	{
+		idc = IDC_ARCANEHUD_BKG_CONNECTOR;
+		x = 46.24 * GUI_GRID_W + GUI_GRID_X;
+		y = -29.65 * GUI_GRID_H + GUI_GRID_Y;
+		w = 0 * GUI_GRID_W;
+		h = 0 * GUI_GRID_H;
+		colorBackground[] = BACKGROUND_SECONDARY;
+	};
+	////////////////////////////////////////////////////////
+	// GUI EDITOR OUTPUT END
+	////////////////////////////////////////////////////////
+};

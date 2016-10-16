@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // Place your settings in this file to overwrite the default settings
+    "editor.insertSpaces": false,
+    "files.associations": {
+        "*.ext": "cpp",
+        "*.h":"cpp",
+        "*.fnc": "sqf",
+        "*.sqm": "sqf",
+        "*.inc": "sqf",
+        "*.diag": "cpp",
+        "*.spell":"sqf"
+    }
+}

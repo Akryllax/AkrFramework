@@ -3,15 +3,15 @@ saving = 0;
 
 author = "Kernel Panic";
 
-onLoadName = "AkrFramework";
-onLoadMission = "AkrFramework v0.01a";
-onLoadIntro = "AkrFramework v0.01a";
+onLoadName = "Arcane Warfare";
+onLoadMission = "Arcane Warfare v0.01a";
+onLoadIntro = "Arcane Warfare v0.01a";
 onLoadMissionTime = 0;
 onLoadIntroTime = 0;
 
 class Header
 {
-	gameType = Akr; // Game type, see 'class' columns in the table below
+	gameType = ARCW; // Game type, see 'class' columns in the table below
 	minPlayers = 1; //min # of players the mission supports
 	maxPlayers = 180; //max # of players the mission supports
 };
@@ -40,6 +40,7 @@ wreckRemovalMaxTime = 700;
 #include "include\RemoteExec.h"
 #include "include\Sounds.h"
 #include "include\Titles.h"
+#include "arcana\includes\Spells.inc"
 
 //taskManagement_markers3D = 1;
 //taskManagement_propagate = 0;

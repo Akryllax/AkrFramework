@@ -1,0 +1,31 @@
+[] spawn {
+	nigga = false;
+	already_pressed = nil;
+	_info = ["get", 2] call spells;
+
+	if(arcanePSI < (_info select 6)) exitWith { hintSilent "Can't use it! Not enough PSI!";};
+	if(last_teleport + (_info select 13) < time) then {
+		_origin = (eyePos player);
+		_multiply = 30;
+		_delta = (eyeDirection player) vectorMultiply _multiply;
+		while {(count lineIntersectsObjs [_origin,_delta,objNull,objNull,true,32]) > 0 && _multiply > 0} do {
+			_multiply = _multiply - 1;
+			_delta = (eyeDirection player) vectorMultiply _multiply;
+		};
+		if(_multiply <= 0) then { hint "Can't teleport. Collision";};
+		player setPos (_origin vectorAdd _delta);
+		last_teleport = time;
+		arcaneLastPSI = time;
+		arcanePSI = arcanePSI - (_info select 6);
+		arcaneTOX = arcaneTOX + (_info select 8);
+		_info spawn {
+			while {last_teleport + (_this select 13) > time} do {
+				(uiNamespace getVariable ['arcaneHUD_text_primary',controlNull]) ctrlSetText format["%1", round (last_teleport + (_this select 13) - time)];
+				sleep 0.2;
+			};
+			(uiNamespace getVariable ['arcaneHUD_text_primary',controlNull]) ctrlSetText "";
+		};
+	} else {
+		hintSilent format["Can't use it! Wait %1 seconds.", last_teleport + (_info select 13) - time];
+	}
+};
