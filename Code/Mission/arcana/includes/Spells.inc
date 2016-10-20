@@ -62,6 +62,25 @@ class CfgSpells
 			userefresh = 5;
 			spellinit = "teleport_init";
 		};
+		class FreezeTime : BaseSpell
+		{
+			id = 3;
+			name = "Freeze time";
+			description = "Freezes time locally for a short period. Shooting inside won't do instant damage, but rather get accumulated until the sphere collapses.";
+
+			type = "PHY";
+			category = "PHY";
+			
+			psicost = 65;
+			toxicity = 35;
+
+			active = 1;
+			activeEffect = "freeze_time";
+			pasiveEffect = "freeze_time_pas";
+
+			userefresh = 10;
+			spellinit = "freeze_time_init";
+		};
 	};
 
 	class Secondary
