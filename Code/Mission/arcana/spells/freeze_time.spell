@@ -1,0 +1,20 @@
+_pos = getPos player;
+_radious = 10; 
+_delay = 
+
+frozen_objs = [];
+
+{
+	// Current result is saved in variable _x
+	frozen_objs pushback _x;
+	_x enableSimulation false;
+} forEach (_pos nearObjects _radious);
+
+_delay spawn {
+	sleep _this;
+
+	{
+		// Current result is saved in variable _x
+		(frozen_objs deleteAt[count frozen_objs-1,_x]) enableSimulation true;
+	} forEach (_pos nearObjects 10);
+}

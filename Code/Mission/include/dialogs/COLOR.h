@@ -1,0 +1,2 @@
+#define BACKGROUND_MAIN 		{0,0,0,0.7}
+#define BACKGROUND_SECONDARY	{0,0,0,0.3}

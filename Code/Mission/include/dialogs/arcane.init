@@ -1,0 +1,5 @@
+disableSerialization;
+(uiNamespace getVariable ['arcaneHUD_progress_psi', controlNull]) progressSetPosition 1;
+(uiNamespace getVariable ['arcaneHUD_text_psi', controlNull]) ctrlSetText ("500");
+(uiNamespace getVariable ['arcaneHUD_progress_tox', controlNull]) progressSetPosition 0.33;
+(uiNamespace getVariable ['arcaneHUD_text_tox', controlNull]) ctrlSetText ("30%");

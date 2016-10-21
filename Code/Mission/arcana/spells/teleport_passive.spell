@@ -1,0 +1,21 @@
+[] spawn {
+	if(!isNil "already_pressed") exitWith {};
+	_info = ["get", 2] call spells;
+	if(arcanePSI < (_info select 6)) exitWith { hintSilent "Can't use it! Not enough PSI!";};
+	already_pressed = "yes";
+	niggaObj = "B_Soldier_VR_F" createVehicleLocal (getPos player);
+	niggaObj switchMove "AfalPercMstpSnonWnonDnon";
+	nigga = true;
+	while {nigga} do {
+		_origin = (getPos player);
+		_multiply = 30;
+		_delta = (eyeDirection player) vectorMultiply _multiply;
+		while {(count lineIntersectsObjs [_origin,_delta,objNull,objNull,true]) > 0 && _multiply > 0} do {
+			_multiply = _multiply - 1;
+			_delta = (eyeDirection player) vectorMultiply _multiply;
+		};
+		niggaObj setPos (_origin vectorAdd _delta);
+		niggaObj setDir (getDir player);
+	};
+	deleteVehicle niggaObj;
+};
