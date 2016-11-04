@@ -4,6 +4,7 @@
 	if(arcanePSI < (_info select 6)) exitWith { hintSilent "Can't use it! Not enough PSI!";};
 	already_pressed = "yes";
 	niggaObj = "B_Soldier_VR_F" createVehicleLocal (getPos player);
+	niggaObj allowdamage false;
 	niggaObj switchMove "AfalPercMstpSnonWnonDnon";
 	nigga = true;
 	while {nigga} do {

@@ -47,13 +47,14 @@ _init =
 	all_spells = _tempTrans;
 
 	//Set player's spell inventory
-	primary_spell = teleport;
+	primary_spell = freeze_time;
 	secondary_spell = {};
 
 	//Set KeyHandler
 	["add", DIK_TAB, primary_spell, true, "up"] call keyhandler;
-	["add", DIK_TAB, teleport_passive, true, "down"] call keyhandler;
+	//["add", DIK_TAB, teleport_passive, true, "down"] call keyhandler;
 	["add", DIK_F1, {player setPos [10000,10000,0];}, true] call keyhandler;
+	["add", DIK_F2, {(typeOf player) createVehicle (getPos player);}] call keyhandler;
 };
 
 _get = 

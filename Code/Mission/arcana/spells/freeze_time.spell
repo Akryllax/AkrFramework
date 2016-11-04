@@ -1,20 +1,26 @@
-_pos = getPos player;
-_radious = 10; 
-_delay = 
+_this spawn {
+	_pos = getPos player;
+	_radious = 10; 
+	_delay = 15;
 
-frozen_objs = [];
+	[_pos, _delay, false] spawn refract_effect;
 
-{
-	// Current result is saved in variable _x
-	frozen_objs pushback _x;
-	_x enableSimulation false;
-} forEach (_pos nearObjects _radious);
-
-_delay spawn {
-	sleep _this;
+	frozen_objs = [];
 
 	{
 		// Current result is saved in variable _x
-		(frozen_objs deleteAt[count frozen_objs-1,_x]) enableSimulation true;
-	} forEach (_pos nearObjects 10);
-}
+		frozen_objs pushback _x;
+		if(!(_x isEqualTo player)) then {
+			_x enableSimulation false;
+		};
+	} forEach (_pos nearObjects _radious);
+
+	[_delay,_pos] spawn {
+		sleep (_this select 0);
+
+		{
+			// Current result is saved in variable _x
+			(frozen_objs deleteAt(count frozen_objs-1)) enableSimulation true;
+		} forEach ((_this select 1) nearObjects 10);
+	}
+};
