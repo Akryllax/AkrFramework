@@ -81,6 +81,25 @@ class CfgSpells
 			userefresh = 10;
 			spellinit = "freeze_time_init";
 		};
+		class ShadowWalk : BaseSpell
+		{
+			id = 4;
+			name = "Shadow walk";
+			description = "Controls an PSI pure entity and can infiltrate enemy grounds. The limit to use this ability is set by the toxicity.";
+
+			type = "PHY";
+			category = "PHY";
+			
+			psicost = 200;
+			toxicity = 15;
+
+			active = 1;
+			activeEffect = "shadow_walk";
+			pasiveEffect = "";
+
+			userefresh = 30;
+			spellinit = "shadow_walk_init";
+		};
 	};
 
 	class Secondary
